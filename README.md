@@ -35,7 +35,7 @@
    3. 在 alpine 操作系统内使用 `apk add` 命令安装需要的包
    4. 将该程序二进制及其依赖的库复制出来即可，具体文件可以去 alpine 官网的 Packages 部分查询
 
-目前已完成系统调用 `sys_getrandom`，稍后会把代码发上来
+目前已完成系统调用 `sys_getrandom` 和 stdin
 
 ---
 

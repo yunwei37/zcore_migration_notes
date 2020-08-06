@@ -5,6 +5,10 @@
 * [郑权](https://github.com/VitalyAnkh)：
 * [许善朴](https://github.com/xushanpu123)：
 * [郑昱笙](https://github.com/yunwei37)：
+  * [ ] 完善文件系统
+  * [ ] 进程间通信机制
+  * [ ] libc-test
+  * [ ] 系统调用的单元测试
 * [李宇](https://github.com/wfly1998)：
   * [ ] 移植 shell
   * [ ] 实现 `sys_fork`
@@ -13,6 +17,8 @@
 ## 已完成工作
 
 ## 每日进度
+
+---
 
 ### 20200806
 
@@ -39,3 +45,7 @@
 
 ---
 
+[郑昱笙](https://github.com/yunwei37)：
+
+- 加了 linux-loader 的文档和一点测试；
+- 目前已完成系统调用 `sys_pipe`，等等测试好了再发 pull-request

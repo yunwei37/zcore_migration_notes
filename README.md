@@ -14,3 +14,28 @@
 
 ## 每日进度
 
+### 20200806
+
+[李宇](https://github.com/wfly1998)：
+
+记一点东西给大家参考，也是我前几天的研究成果
+
+1. zCore 文件系统位置：`zCore/rootfs/`
+
+2. 交叉编译到 zCore 的命令：
+
+   ```sh
+   gcc -Wl,--dynamic-linker=/lib/ld-musl-x86_64.so.1
+   ```
+
+3. 将程序迁移到 zCore 的方法：
+
+   1. 安装 docker 或虚拟机
+   2. 在 docker 或虚拟机内安装 alpine 操作系统
+   3. 在 alpine 操作系统内使用 `apk add` 命令安装需要的包
+   4. 将该程序二进制及其依赖的库复制出来即可，具体文件可以去 alpine 官网的 Packages 部分查询
+
+目前已完成系统调用 `sys_getrandom`，稍后会把代码发上来
+
+---
+

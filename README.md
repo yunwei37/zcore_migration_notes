@@ -1,4 +1,11 @@
-# zcore_migration_notes
+# rCore 到 zCore 的功能迁移组相关文档记录
+
+本仓库内容包含：
+
+- 相关链接，如每日记录文档、相关 issue 和 pull-request，相关资料目录；
+- 每人已完成的目标和未来的计划；
+- 简单的工作记录，可以让同伴大致了解每天完成了什么工作；
+- 相关的分析和报告文档等
 
 ## 组员每日记录文档
 
@@ -8,7 +15,7 @@
 - [许善朴](https://github.com/xushanpu123)
 - [曾广仕](https://github.com/NameAvailable319)
 
-## 组内分工
+## 组内分工和计划 checklist
 
 * [郑权](https://github.com/VitalyAnkh)：
   * [ ] 实现更多 zircon 系统调用
@@ -41,7 +48,7 @@
 * [曾广仕](https://github.com/NameAvailable319)：
  * [ ] 对接文件系统
 
-## 当前进度
+## 当前进度简要记录
 
 [郑权](https://github.com/VitalyAnkh):
 

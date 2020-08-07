@@ -15,6 +15,8 @@
     * [ ] 实现 `zx_thread_read_state`
   * [ ] (尝试）用 Rust 实现的 [relibc](https://gitlab.redox-os.org/redox-os/relibc) 替换预编译的 libc
 * [许善朴](https://github.com/xushanpu123)：
+  * [ ] 为系统调用编写测试
+  * [ ] 完善文件系统
 * [郑昱笙](https://github.com/yunwei37)：
   * [ ] 给linux相关的三个模块增加文档
     * [x] linux-loader

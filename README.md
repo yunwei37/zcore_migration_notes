@@ -4,10 +4,9 @@
 
 * [郑权](https://github.com/VitalyAnkh)：
   * [ ] 实现更多 zircon 系统调用
+    * [ ] 实现 `zx_thread_read_state`
   * [ ] (尝试）用 Rust 实现的 [relibc](https://gitlab.redox-os.org/redox-os/relibc) 替换预编译的 libc
 * [许善朴](https://github.com/xushanpu123)：
-  * [ ] 完善更多的文件系统
-  * [ ] 根据rustc的逻辑链移植或实现所需的syscall
 * [郑昱笙](https://github.com/yunwei37)：
   * [ ] 完善文件系统
   * [ ] 进程间通信机制
@@ -26,6 +25,10 @@
 ## 每日进度
 
 ### 20200806
+
+[郑权](https://github.com/VitalyAnkh):
+今天在读 zircon-object 代码，尝试实现 `thread_read_state`， 还没有成果。计划：
+1. zircon-object 中大量使用了 rust 的 async 语法，学习之
 
 [李宇](https://github.com/wfly1998)：
 

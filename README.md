@@ -1,5 +1,13 @@
 # zcore_migration_notes
 
+## 组员每日记录文档
+
+- [李宇](https://github.com/wfly1998/DailySchedule)
+- [郑权](https://github.com/VitalyAnkh)
+- [郑昱笙](https://github.com/yunwei37/os-summer-of-code-daily)
+- [许善朴](https://github.com/xushanpu123)
+- [曾广仕](https://github.com/NameAvailable319)
+
 ## 组内分工
 
 * [郑权](https://github.com/VitalyAnkh)：
@@ -8,10 +16,18 @@
   * [ ] (尝试）用 Rust 实现的 [relibc](https://gitlab.redox-os.org/redox-os/relibc) 替换预编译的 libc
 * [许善朴](https://github.com/xushanpu123)：
 * [郑昱笙](https://github.com/yunwei37)：
-  * [ ] 完善文件系统
+  * [ ] 给linux相关的三个模块增加文档
+    * [x] linux-loader
+    * [x] linux-syscall
+    * [ ] linux-object 
+  * [ ] 完善文件系统相关
   * [ ] 进程间通信机制
-  * [ ] libc-test
+    * [x] pipe 系统调用（正在进行测试）
+    * [ ] 可能也需要对 linux-object 线程和进程进行一定改进
   * [ ] 系统调用的单元测试
+    * [ ] 使用 busybox 的命令进行一定的测试（已完成部分）
+    * [ ] 完善系统调用单元测试的框架
+    * [ ] libc-test
 * [李宇](https://github.com/wfly1998)：
   * [ ] 移植 shell
     * [x] 实现 stdin
@@ -59,4 +75,4 @@
 [郑昱笙](https://github.com/yunwei37)：
 
 - 加了 linux-loader 的文档和一点测试；
-- 目前已完成系统调用 `sys_pipe`，等等测试好了再发 pull-request
+- 目前已完成系统调用 `sys_pipe`，但由于 fork 暂时没办法用可能比较难以通过用户态程序测试...

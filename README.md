@@ -3,7 +3,7 @@
 ## 组员每日记录文档
 
 - [李宇](https://github.com/wfly1998/DailySchedule)
-- [郑权](https://github.com/VitalyAnkh)
+- [郑权](https://github.com/VitalyAnkh/learn/blob/master/Notebook/org/20200804025006-zcore_journal.org)
 - [郑昱笙](https://github.com/yunwei37/os-summer-of-code-daily)
 - [许善朴](https://github.com/xushanpu123)
 - [曾广仕](https://github.com/NameAvailable319)
@@ -47,7 +47,7 @@
 
 [郑权](https://github.com/VitalyAnkh):
 
-在读 zircon-object 代码，尝试实现 `thread_read_state`， 还没有成果。计划：
+在读 zircon-object 代码，尝试实现 `zx_thread_read_state`， 还没有成果。计划：
 
  zircon-object 中大量使用了 rust 的 async 语法，学习之
 

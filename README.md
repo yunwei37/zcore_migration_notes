@@ -3,6 +3,8 @@
 ## 组内分工
 
 * [郑权](https://github.com/VitalyAnkh)：
+  * [ ] 实现更多 zircon 系统调用
+  * [ ] (尝试）用 Rust 实现的 [relibc](https://gitlab.redox-os.org/redox-os/relibc) 替换预编译的 libc
 * [许善朴](https://github.com/xushanpu123)：
 * [郑昱笙](https://github.com/yunwei37)：
   * [ ] 完善文件系统

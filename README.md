@@ -48,6 +48,11 @@
 * [曾广仕](https://github.com/NameAvailable319)：
  * [ ] 对接文件系统
 
+## 参考链接
+
+感觉这一组做的工作可能会对我们有不少参考意义：
+[https://github.com/rcore-os/rCore/tree/master/docs/2020_OS/g2](https://github.com/rcore-os/rCore/tree/master/docs/2020_OS/g2)
+
 ## 当前进度简要记录
 
 [郑权](https://github.com/VitalyAnkh):

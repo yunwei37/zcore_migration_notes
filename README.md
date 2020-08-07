@@ -6,6 +6,8 @@
   * [ ] 实现更多 zircon 系统调用
   * [ ] (尝试）用 Rust 实现的 [relibc](https://gitlab.redox-os.org/redox-os/relibc) 替换预编译的 libc
 * [许善朴](https://github.com/xushanpu123)：
+  * [ ] 完善更多的文件系统
+  * [ ] 根据rustc的逻辑链移植或实现所需的syscall
 * [郑昱笙](https://github.com/yunwei37)：
   * [ ] 完善文件系统
   * [ ] 进程间通信机制

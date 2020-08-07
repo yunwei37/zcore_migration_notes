@@ -31,25 +31,24 @@
     * [ ] 完善系统调用单元测试的框架
     * [ ] libc-test
 * [李宇](https://github.com/wfly1998)：
-  * [ ] 移植 shell
+  * [x] 移植 shell
     * [x] 实现 stdin
-      * [ ] 实现 `Condvar`
-    * [ ] 实现 `sys_poll`
+      * [ ] ~~实现 `Condvar`~~（rjgg 说不需要了）
+    * [x] 实现 `sys_poll`
   * [ ] 实现 `sys_fork`
+  * [ ] 移植 rustc
 * [曾广仕](https://github.com/NameAvailable319)：
- *[ ] 对接文件系统
+ * [ ] 对接文件系统
 
-## 已完成工作
-
-## 每日进度
-
-### 20200806
+## 当前进度
 
 [郑权](https://github.com/VitalyAnkh):
 
 在读 zircon-object 代码，尝试实现 `zx_thread_read_state`， 还没有成果。计划：
 
  zircon-object 中大量使用了 rust 的 async 语法，学习之
+
+---
 
 [李宇](https://github.com/wfly1998)：
 
@@ -70,7 +69,9 @@
    3. 在 alpine 操作系统内使用 `apk add` 命令安装需要的包
    4. 将该程序二进制及其依赖的库复制出来即可，具体文件可以去 alpine 官网的 Packages 部分查询
 
-目前已完成系统调用 `sys_getrandom` 和 stdin，已提交 [Pull Request #131](https://github.com/rcore-os/zCore/pull/131)
+20200806：已完成系统调用 `sys_getrandom` 和 stdin，已提交 [Pull Request #131](https://github.com/rcore-os/zCore/pull/131)
+
+20200807：已完成系统调用 `sys_nanosleep`，`sys_poll`，`sys_prlimit64`，并移植 shell 成功。目前可以执行 shell 内置命令，但不能运行外部程序
 
 ---
 

@@ -28,7 +28,9 @@
 ### 20200806
 
 [郑权](https://github.com/VitalyAnkh):
-今天在读 zircon-object 代码，尝试实现 `thread_read_state`， 还没有成果。计划：
+
+在读 zircon-object 代码，尝试实现 `thread_read_state`， 还没有成果。计划：
+
 1. zircon-object 中大量使用了 rust 的 async 语法，学习之
 
 [李宇](https://github.com/wfly1998)：

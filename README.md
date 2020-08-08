@@ -39,8 +39,8 @@
     * [x] 完善系统调用单元测试的框架
     * [ ] libc-test
 * [李宇](https://github.com/wfly1998)：
-  * [x] 移植 shell
-    * [x] 实现 stdin
+  * [ ] 移植 shell
+    * [ ] 实现 stdin
       * [ ] ~~实现 `Condvar`~~（rjgg 说不需要了）
     * [x] 实现 `sys_poll`
   * [ ] 实现 `sys_fork`
@@ -74,6 +74,12 @@
    ```sh
    gcc -Wl,--dynamic-linker=/lib/ld-musl-x86_64.so.1
    ```
+   
+   或者
+   
+   ```sh
+   musl-gcc -pie -fpie
+   ```
 
 3. 将程序迁移到 zCore 的方法：
 
@@ -85,6 +91,8 @@
 20200806：已完成系统调用 `sys_getrandom` 和 stdin，已提交 [Pull Request #131](https://github.com/rcore-os/zCore/pull/131)
 
 20200807：已完成系统调用 `sys_nanosleep`，`sys_poll`，`sys_prlimit64`，并移植 shell 成功。目前可以执行 shell 内置命令，但不能运行外部程序
+
+20200808：刚打算在 QEMU 里折腾 `sys_fork`，突然发现我写的 stdin 在 QEMU 里不能用，给自己挖了个坑 qwq （然后我又默默把上面的打的勾去掉了
 
 ---
 

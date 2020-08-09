@@ -44,6 +44,7 @@ Group wiki: [2020年操作系统专题训练大实验-移植rCore内核功能到
   * [ ] 移植 shell
     * [ ] 实现 stdin
       * [ ] ~~实现 `Condvar`~~（rjgg 说不需要了）
+      * [ ] 实现信号机制
     * [x] 实现 `sys_poll`
     * [ ] 实现 `sys_fork`
   * [ ] 移植 GNU Make
@@ -95,9 +96,11 @@ Group wiki: [2020年操作系统专题训练大实验-移植rCore内核功能到
 
 20200806：已完成系统调用 `sys_getrandom` 和 stdin，已提交 [Pull Request #131](https://github.com/rcore-os/zCore/pull/131)
 
-20200807：已完成系统调用 `sys_nanosleep`，`sys_poll`，`sys_prlimit64`，并移植 shell 成功。目前可以执行 shell 内置命令，但不能运行外部程序
+20200807：已完成系统调用 `sys_nanosleep`，`sys_poll`，`sys_prlimit64`，并移植 shell 成功。目前可以执行 shell 内置命令，但因为 `sys_fork` 不完善，不能运行外部程序
 
-20200808：刚打算在 QEMU 里折腾 `sys_fork`，突然发现我写的 stdin 在 QEMU 里不能用，给自己挖了个坑 qwq （然后我又默默把上面的打的勾去掉了
+20200808：突然发现 stdin 在 QEMU 里不能用，正在找原因（顺便把上面打的勾去掉了
+
+20200809：找到原因了，是 zCore 中断的 bug，见 [issue #137](https://github.com/rcore-os/zCore/issues/137)
 
 ---
 

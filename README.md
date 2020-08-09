@@ -7,7 +7,7 @@
 - 简单的工作记录，可以让同伴大致了解每天完成了什么工作；
 - 相关的分析和报告文档等
 
-Group wiki: [http://os.cs.tsinghua.edu.cn/oscourse/OsTrain2020/g3#A20200807-.2BeyxOjJY2a7V27mgHY8.2BP8A-](http://os.cs.tsinghua.edu.cn/oscourse/OsTrain2020/g3#A20200807-.2BeyxOjJY2a7V27mgHY8.2BP8A-)
+Group wiki: [2020年操作系统专题训练大实验-移植rCore内核功能到zCore](http://os.cs.tsinghua.edu.cn/oscourse/OsTrain2020/g3)
 
 ## 组员每日记录文档
 
@@ -45,8 +45,11 @@ Group wiki: [http://os.cs.tsinghua.edu.cn/oscourse/OsTrain2020/g3#A20200807-.2Be
     * [ ] 实现 stdin
       * [ ] ~~实现 `Condvar`~~（rjgg 说不需要了）
     * [x] 实现 `sys_poll`
-  * [ ] 实现 `sys_fork`
-  * [ ] 移植 rustc
+    * [ ] 实现 `sys_fork`
+  * [ ] 移植 GNU Make
+  * [ ] 移植 Rust 工具链
+  * [ ] 移植 GCC
+  * [ ] 移植 Nginx
 * [曾广仕](https://github.com/NameAvailable319)：
  * [ ] 对接文件系统
 

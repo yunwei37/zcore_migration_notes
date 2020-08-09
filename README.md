@@ -7,6 +7,8 @@
 - 简单的工作记录，可以让同伴大致了解每天完成了什么工作；
 - 相关的分析和报告文档等
 
+Group wiki: [http://os.cs.tsinghua.edu.cn/oscourse/OsTrain2020/g3#A20200807-.2BeyxOjJY2a7V27mgHY8.2BP8A-](http://os.cs.tsinghua.edu.cn/oscourse/OsTrain2020/g3#A20200807-.2BeyxOjJY2a7V27mgHY8.2BP8A-)
+
 ## 组员每日记录文档
 
 - [李宇](https://github.com/wfly1998/DailySchedule)
@@ -106,3 +108,8 @@
 
 - 目前已完成系统调用 `sys_pipe`，添加了测试和文档；
 - 增加了单元测试可能的框架
+
+20200808：
+
+- 编译运行 libc-test 成功，思考如何进行自动化测试
+- 增加了部分 time 相关系统调用，正在完善

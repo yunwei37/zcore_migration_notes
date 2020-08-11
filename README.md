@@ -121,3 +121,28 @@ Group wiki: [2020年操作系统专题训练大实验-移植rCore内核功能到
 
 - 编译运行 libc-test 成功，思考如何进行自动化测试
 - 增加了部分 time 相关系统调用，正在完善
+
+202008010：
+
+- 感觉这部分其实做了一点无用功（虽然也不完全是
+- 另外补上了 sys_utimensat，现在可以正常使用 touch 创建文件；
+
+202008011：
+
+- 修改了一点之前犯蠢的测试代码，现在可以使用c语言进行正常的单元测试；
+- pull-request: [#135](https://github.com/rcore-os/zCore/pull/135) 被合并啦
+
+希望之后有人能一起来完善单元测试：
+
+1. 在 linux-syscall/test 文件夹里面编写 c 语言的测试程序，可以使用 assert 函数判断是否正确；
+2. 在 linux-loader 的 main.rs 里面可以这样写：
+
+```rs
+    #[async_std::test]
+    async fn test_pipe() {
+        assert_eq!(test("/bin/testpipe1").await, 0);
+    }
+```
+
+3. 运行 `make rootfs` 命令
+4. run test

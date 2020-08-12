@@ -104,6 +104,8 @@ Group wiki: [2020年操作系统专题训练大实验-移植rCore内核功能到
 
 20200811：QEMU 一直收不到中断，LibOS 难以实现 `sys_fork` 和 SOCKET 相关系统调用，卡在这了...
 
+20200812：把可以迁移的程序放到仓库里了，自取
+
 ---
 
 [郑昱笙](https://github.com/yunwei37)：

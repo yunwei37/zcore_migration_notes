@@ -41,10 +41,9 @@ Group wiki: [2020年操作系统专题训练大实验-移植rCore内核功能到
     * [x] 完善系统调用单元测试的框架
     * [ ] libc-test
 * [李宇](https://github.com/wfly1998)：
-  * [ ] 移植 shell
-    * [ ] 实现 stdin
-      * [ ] ~~实现 `Condvar`~~（rjgg 说不需要了）
-      * [ ] 实现信号机制
+  * [x] 移植 shell
+    * [x] 实现 stdin
+      * [x] 实现 `EventBus`
     * [x] 实现 `sys_poll`
     * [ ] 实现 `sys_fork`
   * [ ] 移植 GNU Make
@@ -104,7 +103,7 @@ Group wiki: [2020年操作系统专题训练大实验-移植rCore内核功能到
 
 20200811：QEMU 一直收不到中断，LibOS 难以实现 `sys_fork` 和 SOCKET 相关系统调用，卡在这了...
 
-20200812：把可以迁移的程序放到仓库里了，自取
+20200812：把可以迁移的程序放到仓库里了，自取，然后收不到中断的问题算是解决了吧，是我自己闹的乌龙，问题解决之后迅速完成了带 `EventBus` 的 stdin，然而提交 pr 之前又 merge 了一晚上（哭
 
 ---
 

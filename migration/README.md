@@ -4,9 +4,16 @@
 * Rust 工具链
 * Nginx
 * fish
-* ~~GCC~~
+* GCC
 
-使用方法：
+## 仓库目录
+
+* `bin/`：`fish`, `nginx`, `make`
+* `lib/`：所有工具依赖的库
+* `root/`：musl-rust 工具链
+* `x86_64-linux-musl`：musl-gcc 工具链
+
+## 使用方法
 
 ```bash
 cp -d bin/* path_to_zcore/rootfs/bin
@@ -67,10 +74,6 @@ cargo run -p linux-loader /bin/nginx
 
    即可看到缺少系统调用 `SOCKET`
 
-### 附：GCC
+### GCC
 
-GCC 由于编译指令问题，没有 PIE-enable，在 zCore 中无法运行，会报如下错误：
-
-> /lib/ld-musl-x86_64.so.1: /bin/gcc: Not a valid dynamic program
-
-可能需要重新编译，或者修改 zCore
+GCC 5.3.0 重新编译完成！已放到 [x86_64-linux-musl](x86_64-linux-musl) 目录内

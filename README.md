@@ -45,10 +45,10 @@ Group wiki: [2020年操作系统专题训练大实验-移植rCore内核功能到
     * [x] 实现 stdin
       * [x] 实现 `EventBus`
     * [x] 实现 `sys_poll`
-    * [ ] 实现 `sys_fork`
+    * [ ] ~~实现 `sys_fork`~~（LibOS 中难以实现，QEMU 中已经实现）
   * [x] 移植 GNU Make
   * [ ] 移植 Rust 工具链
-  * [ ] 移植 GCC
+  * [x] 移植 GCC
   * [ ] 移植 Nginx
 * [曾广仕](https://github.com/NameAvailable319)：
  * [ ] 对接文件系统
@@ -105,7 +105,7 @@ Group wiki: [2020年操作系统专题训练大实验-移植rCore内核功能到
 
 20200812：把可以迁移的程序放到仓库里了，自取。然后收不到中断的问题算是解决了吧，是我自己闹的乌龙，问题解决之后迅速完成了带 `EventBus` 的 stdin，然而提交 pr 之前又 merge 了一晚上（哭
 
-20200813：试了下，GNU Make 可以正常运行了，不过没有 GCC 和 Rust 工具链好像也没什么用（小声
+20200813：试了下，GNU Make 可以正常运行了，GCC 也移植成功，可以编译，不过缺少 `CHMOD` 系统调用，无法给编译出的程序添加运行权限
 
 ---
 

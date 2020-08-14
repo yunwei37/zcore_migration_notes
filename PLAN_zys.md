@@ -4,7 +4,7 @@
 
 - [x] linux-loader （已合并到主分支）
 - [x] linux-syscall （已合并到主分支）
-- [ ] linux-object （预计 8.10 号左右完成）
+- [x] linux-object （预计 8.10 号左右完成）
 - [ ] 考虑撰写一些分析相关的文章
 
 ## 完善 zCore 的 linux 子系统测试框架

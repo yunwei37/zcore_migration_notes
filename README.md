@@ -27,17 +27,17 @@ Group wiki: [2020年操作系统专题训练大实验-移植rCore内核功能到
   * [ ] 为系统调用编写测试
   * [ ] 完善文件系统
 * [郑昱笙](https://github.com/yunwei37)：
-  * [ ] 给linux相关的三个模块增加文档
+  * [x] 给linux相关的三个模块增加文档
     * [x] linux-loader
     * [x] linux-syscall
-    * [ ] linux-object 
+    * [x] linux-object 
   * [ ] 完善文件系统相关
   * [ ] 进程间通信机制
     * [x] pipe 系统调用
     * [ ] async 相关实现
     * [ ] 可能也需要对 linux-object 线程和进程进行一定改进;
   * [ ] 系统调用的单元测试
-    * [ ] 使用 busybox 的命令进行一定的测试（已完成部分）
+    * [x] 使用 busybox 的命令进行一定的测试（已完成部分）
     * [x] 完善系统调用单元测试的框架
     * [ ] libc-test
 * [李宇](https://github.com/wfly1998)：
@@ -149,3 +149,16 @@ Group wiki: [2020年操作系统专题训练大实验-移植rCore内核功能到
 
 3. 运行 `make rootfs` 命令
 4. run test
+
+2020/8/12
+
+- 一些文档和杂七杂八的系统调用接口以及测试的打杂的活,具体参考这里：[#142](https://github.com/rcore-os/zCore/pull/142) 
+- 已经被合并
+
+2020/8/13
+
+- 这两天也有些时候在解决测量学实验和计算机组成课程的内容，以及其他杂七杂八的考试，所以时间有可能会稍微不那么多一点...
+
+2020/8/14
+
+- 着手修复 pipe 的相关问题

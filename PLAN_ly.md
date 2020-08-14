@@ -13,12 +13,11 @@
 
 ## 移植 GNU Make
 
-- [x] 移植 make
+- [ ] 移植 make
 
 ## 移植 Rust 工具链
 
 - [ ] 移植 Rust 工具链
-  - [ ] 待补充
 
 ## 移植 GCC
 

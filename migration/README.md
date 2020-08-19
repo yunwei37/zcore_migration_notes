@@ -19,6 +19,7 @@
 cp -d bin/* path_to_zcore/rootfs/bin
 cp -d lib/* path_to_zcore/rootfs/lib
 cp -rd root path_to_zcore/rootfs/
+cp -r x86_64-linux-musl/* ~/github/fork/zCore/rootfs
 ```
 
 经过一定修改后即可在 zCore 目录中运行，如：
@@ -77,3 +78,11 @@ cargo run -p linux-loader /bin/nginx
 ### GCC
 
 GCC 5.3.0 重新编译完成！已放到 [x86_64-linux-musl](x86_64-linux-musl) 目录内
+
+使用方法：
+
+直接使用如下命令运行，也可在 `rootfs/root/` 内创建 `*.c` 文件供 GCC 编译
+
+```bash
+cargo run -p linux-loader /bin/x86_64-linux-musl-gcc
+```

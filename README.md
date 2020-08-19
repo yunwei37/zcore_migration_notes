@@ -176,3 +176,8 @@ Group wiki: [2020年操作系统专题训练大实验-移植rCore内核功能到
   - 似乎很多没办法通过的测试还是和 symlink 的绝对路径相关；
   - 浮点数运算差异应该可以不用管
   - 部分是系统调用还没有实现或者实现有部分差异；
+
+2020/8/17 - 2020/8/18
+
+- add semaphores related syscalls
+- [#156](https://github.com/rcore-os/zCore/pull/156)

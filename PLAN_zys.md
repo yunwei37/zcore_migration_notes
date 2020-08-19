@@ -4,7 +4,7 @@
 
 - [x] linux-loader （已合并到主分支）
 - [x] linux-syscall （已合并到主分支）
-- [x] linux-object （预计 8.10 号左右完成）
+- [x] linux-object （已合并到主分支）
 - [ ] 考虑撰写一些分析相关的文章
 
 ## 完善 zCore 的 linux 子系统测试框架
@@ -26,6 +26,7 @@
 - [x] 修改了一下文件创建相关，增加了文件打开上限
 - [x] 解决了一个shell里面环境变量的bug
 - [ ] 共享内存相关系统调用
+- [x] 信号量相关系统调用
 
 ## 移植 GNU Make
 
@@ -40,7 +41,7 @@
 ## 移植 GCC
 
 - [ ] 移植 GCC
-  - [ ] 待补充
+  - [x] hello world
 
 ## 移植 Nginx
 

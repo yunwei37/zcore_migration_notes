@@ -93,21 +93,35 @@ Group wiki: [2020年操作系统专题训练大实验-移植rCore内核功能到
    3. 在 alpine 操作系统内使用 `apk add` 命令安装需要的包
    4. 将该程序二进制及其依赖的库复制出来即可，具体文件可以去 alpine 官网的 Packages 部分查询
 
-20200806：已完成系统调用 `sys_getrandom` 和 stdin，已提交 [Pull Request #131](https://github.com/rcore-os/zCore/pull/131)
+20200806：
 
-20200807：已完成系统调用 `sys_nanosleep`，`sys_poll`，`sys_prlimit64`，并移植 shell 成功。目前可以执行 shell 内置命令，但因为 `sys_fork` 不完善，不能运行外部程序
+- 在 LibOS 中实现 stdin 成功
 
-20200808：突然发现 stdin 在 QEMU 里不能用，正在找原因（顺便把上面打的勾去掉了
+20200807：
 
-20200809：找到原因了，是 zCore 中断的 bug，见 [issue #137](https://github.com/rcore-os/zCore/issues/137)
+- 在 LibOS 中移植 shell 勉强成功，可以运行内置命令
 
-20200811：QEMU 一直收不到中断，LibOS 难以实现 `sys_fork` 和 SOCKET 相关系统调用，卡在这了...
+20200812：
 
-20200812：把可以迁移的程序放到仓库里了，自取。然后收不到中断的问题算是解决了吧，是我自己闹的乌龙，问题解决之后迅速完成了带 `EventBus` 的 stdin，然而提交 pr 之前又 merge 了一晚上（哭
+- 在 QEMU 中实现 stdin 成功
+- 此外，我把可以迁移的程序放到仓库里了
 
-20200813：试了下，GNU Make 可以正常运行了，GCC 也在 LibOS 中移植成功，可以编译，不过缺少 `CHMOD` 系统调用，无法给编译出的程序添加运行权限，写好之后发现 HostFS 不支持
+20200813：
 
-20200814：今天写了几个 `Makefile` 结果发现 GNU Make 只是可以正常报错，并不能正常运行没有错误的程序...
+- GCC 在 LibOS 中移植成功，可以直接使用
+
+20200819：
+
+- GCC 在 QEMU 中移植成功，使用前需要：
+  1. 修改 `linux-syscall/src/lib.rs`，让 `Sys::VFORK` 执行 `sys_fork`
+  2. 修改 `zCore/src/memory.rs` 第 20 行，把 16M 的内存改为至少 64 M
+  3. 将 `x86_64.img` 调整到合适大小，方法：
+     ```bash
+     dd if=/dev/zero of=tmp.img count=800000
+     dd if=x86_64.img of=tmp.img conv=notrunc
+     cp tmp.img x86_64.img
+     ```
+     其中 800000 可根据需求改为任意数值
 
 ---
 

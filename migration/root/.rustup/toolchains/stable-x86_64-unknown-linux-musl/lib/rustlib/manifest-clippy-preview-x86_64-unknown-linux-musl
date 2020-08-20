@@ -1,5 +1,0 @@
-file:bin/cargo-clippy
-file:bin/clippy-driver
-file:share/doc/clippy/LICENSE-APACHE
-file:share/doc/clippy/README.md
-file:share/doc/clippy/LICENSE-MIT

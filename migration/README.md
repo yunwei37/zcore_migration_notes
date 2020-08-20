@@ -10,15 +10,15 @@
 
 * `bin/`：`fish`, `nginx`, `make`
 * `lib/`：所有工具依赖的库
-* `root/`：musl-rust 工具链
 * `x86_64-linux-musl`：musl-gcc 工具链
 
 ## 使用方法
 
+### `fish`, `nginx`, `gcc`
+
 ```bash
 cp -d bin/* path_to_zcore/rootfs/bin
 cp -d lib/* path_to_zcore/rootfs/lib
-cp -rd root path_to_zcore/rootfs/
 cp -r x86_64-linux-musl/* ~/github/fork/zCore/rootfs
 ```
 
@@ -27,19 +27,35 @@ cp -r x86_64-linux-musl/* ~/github/fork/zCore/rootfs
 ```bash
 cargo run -p linux-loader /bin/fish
 cargo run -p linux-loader /bin/nginx
-cargo run -p linux-loader /root/.cargo/bin/rustc
-cargo run -p linux-loader /bin/gcc
+cargo run -p linux-loader /bin/x86_64-linux-musl-gcc
+```
+
+### `rustc`
+
+从 [x86_64-unknown-linux-musl](https://static.rust-lang.org/dist/rust-1.45.2-x86_64-unknown-linux-musl.tar.gz) 下载 Rust 工具链安装包并解压，解压后：
+
+```bash
+cd rust-1.45.2-x86_64-unknown-linux-musl
+./install.sh --prefix=path_to_zCore_rootfs
+```
+
+之后即可运行 rustc：
+
+```bash
+cargo run -p linux-loader /bin/rustc
 ```
 
 ## 目前进度
 
 ### GNU Make
 
-可以直接运行，但是编写 `Makefile` 并运行*可能*需要 `sys_fork`（未测试）
+LibOS 中，会因为 `sys_vfork` 而报段错误
+
+QEMU 中，会报不支持用户态中断
 
 ### Rust 工具链
 
-不需要网络的部分运行不报错，但是也没有输出（正在解决）
+LibOS 中，目前可以正常输出 `--help` 信息，但是编译时会报不明原因的段错误（正在解决）
 
 ### Nginx
 

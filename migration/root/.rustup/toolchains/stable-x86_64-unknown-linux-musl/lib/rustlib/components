@@ -1,5 +1,0 @@
-cargo-x86_64-unknown-linux-musl
-clippy-preview-x86_64-unknown-linux-musl
-rust-std-x86_64-unknown-linux-musl
-rustc-x86_64-unknown-linux-musl
-rustfmt-preview-x86_64-unknown-linux-musl

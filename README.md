@@ -32,10 +32,10 @@ Group wiki: [2020年操作系统专题训练大实验-移植rCore内核功能到
     * [x] linux-syscall
     * [x] linux-object 
   * [ ] 完善文件系统相关
-  * [ ] 进程间通信机制
+  * [x] 进程间通信机制
     * [x] pipe 系统调用
-    * [ ] async 相关实现
-    * [ ] 可能也需要对 linux-object 线程和进程进行一定改进;
+    * [x] 信号量系统调用
+    * [x] 共享内存系统调用（大概能跑，继续完善）
   * [ ] 系统调用的单元测试
     * [x] 使用 busybox 的命令进行一定的测试（已完成部分）
     * [x] 完善系统调用单元测试的框架
@@ -181,3 +181,7 @@ Group wiki: [2020年操作系统专题训练大实验-移植rCore内核功能到
 
 - add semaphores related syscalls
 - [#156](https://github.com/rcore-os/zCore/pull/156)
+
+2020/8/20 - 
+
+- pull request: [#160](https://github.com/rcore-os/zCore/pull/160)

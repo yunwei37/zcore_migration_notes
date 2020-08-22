@@ -32,7 +32,7 @@ cargo run -p linux-loader /bin/x86_64-linux-musl-gcc
 
 ### `rustc`
 
-从 [x86_64-unknown-linux-musl](https://static.rust-lang.org/dist/rust-1.45.2-x86_64-unknown-linux-musl.tar.gz) 下载 Rust 工具链安装包并解压，解压后：
+从 [x86\_64-unknown-linux-musl](https://static.rust-lang.org/dist/rust-1.45.2-x86_64-unknown-linux-musl.tar.gz) 下载 Rust 工具链安装包并解压，解压后：
 
 ```bash
 cd rust-1.45.2-x86_64-unknown-linux-musl
@@ -93,12 +93,24 @@ cargo run -p linux-loader /bin/nginx
 
 ### GCC
 
-GCC 5.3.0 重新编译完成！已放到 [x86_64-linux-musl](x86_64-linux-musl) 目录内
+GCC 5.3.0 重新编译完成！已放到 [x86\_64-linux-musl](x86_64-linux-musl) 目录内
 
 使用方法：
 
 直接使用如下命令运行，也可在 `rootfs/root/` 内创建 `*.c` 文件供 GCC 编译
 
 ```bash
-cargo run -p linux-loader /bin/x86_64-linux-musl-gcc
+cargo run -p linux-loader /bin/x86_64-linux-musl-gcc -pie -fpie
 ```
+
+### rustc
+
+使用方法：
+
+```bash
+cargo run -p linux-loader /bin/rustc
+```
+
+- LibOS 中可以正常输出帮助信息，编译则会报段错误，但可以产生编译中间的 `*.o` 文件
+- QEMU 中会报 OOM (out of memory)，原因不明，但不是因为内存不足
+

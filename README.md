@@ -45,18 +45,16 @@ Group wiki: [2020年操作系统专题训练大实验-移植rCore内核功能到
     * [x] 实现 stdin
       * [x] 实现 `EventBus`
     * [x] 实现 `sys_poll`
-    * [ ] ~~实现 `sys_fork`~~（LibOS 中难以实现，QEMU 中已经实现）
   * [ ] 移植 GNU Make
   * [ ] 移植 Rust 工具链
   * [x] 移植 GCC
-  * [ ] 移植 Nginx
 * [曾广仕](https://github.com/NameAvailable319)：
  * [ ] 对接文件系统
 
 ## 参考链接
 
 感觉这一组做的工作可能会对我们有不少参考意义：
-[https://github.com/rcore-os/rCore/tree/master/docs/2020_OS/g2](https://github.com/rcore-os/rCore/tree/master/docs/2020_OS/g2)
+[https://github.com/rcore-os/rCore/tree/master/docs/2020\_OS/g2](https://github.com/rcore-os/rCore/tree/master/docs/2020_OS/g2)
 
 ## 当前进度简要记录
 
@@ -86,16 +84,18 @@ Group wiki: [2020年操作系统专题训练大实验-移植rCore内核功能到
    musl-gcc -pie -fpie
    ```
 
+   或者直接在 Alpine Linux 中编译
+
 3. 将程序迁移到 zCore 的方法：
 
    1. 安装 docker 或虚拟机
-   2. 在 docker 或虚拟机内安装 alpine 操作系统
-   3. 在 alpine 操作系统内使用 `apk add` 命令安装需要的包
-   4. 将该程序二进制及其依赖的库复制出来即可，具体文件可以去 alpine 官网的 Packages 部分查询
+   2. 在 docker 或虚拟机内安装 Alpine Linux 操作系统
+   3. 在 Alpine 操作系统内使用 `apk add` 命令安装需要的包
+   4. 将该程序二进制及其依赖的库复制出来即可，具体文件可以去 Alpine 官网的 Packages 部分查询
 
 20200806：
 
-- 在 LibOS 中实现 stdin 成功
+- 在 LibOS 中实现 stdin 成功，也添加了一些必要的系统调用：[#131](https://github.com/rcore-os/zCore/pull/131)
 
 20200807：
 
@@ -103,15 +103,24 @@ Group wiki: [2020年操作系统专题训练大实验-移植rCore内核功能到
 
 20200812：
 
-- 在 QEMU 中实现 stdin 成功
-- 此外，我把可以迁移的程序放到仓库里了
+- 在 QEMU 中实现 stdin 成功：[#143](https://github.com/rcore-os/zCore/pull/143)
+- 此外，我把可以迁移的程序放到仓库里了：[migration](https://github.com/yunwei37/zcore_migration_notes/tree/master/migration)
 
 20200813：
 
-- GCC 在 LibOS 中移植成功，可以直接使用
+- GCC 在 LibOS 中移植成功，编译时需要加 `-pie -fpie` 参数
+
+20200816：
+
+- 修复了 `sys_wait4` 的 bug，现在 shell 在 QEMU 中可以勉强正常运行，不会因为 `sys_wait4` 而阻塞：[#150](https://github.com/rcore-os/zCore/pull/150)
+
+20200817：
+
+- 添加了信号相关的系统调用，一点尝试：[#155](https://github.com/rcore-os/zCore/pull/155)
 
 20200819：
 
+- 将 `sys_pipe` 改为 `sys_pipe2`，一点尝试：[#157](https://github.com/rcore-os/zCore/pull/157)
 - GCC 在 QEMU 中移植成功，使用前需要：
   1. 修改 `linux-syscall/src/lib.rs`，让 `Sys::VFORK` 执行 `sys_fork`
   2. 修改 `zCore/src/memory.rs` 第 20 行，把 16M 的内存改为至少 64 M
@@ -124,6 +133,10 @@ Group wiki: [2020年操作系统专题训练大实验-移植rCore内核功能到
      其中 800000 可根据需求改为任意数值
   
   编译时需添加 `-pie -fpie` 参数
+
+20200820：
+
+- 修复了 `sys_poll` 的缺陷，现在 rustc 不会再死循环调用 `sys_poll` 了：[#158](https://github.com/rcore-os/zCore/pull/158)
 
 ---
 

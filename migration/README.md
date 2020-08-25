@@ -5,10 +5,12 @@
 * Nginx
 * fish
 * GCC
+* busybox (Force NOMMU)
+* Git
 
 ## 仓库目录
 
-* `bin/`：`fish`, `nginx`, `make`
+* `bin/`：`fish`, `nginx`, `make`, `busybox`, `git`
 * `lib/`：所有工具依赖的库
 * `x86_64-linux-musl`：musl-gcc 工具链
 
@@ -19,7 +21,7 @@
 ```bash
 cp -d bin/* path_to_zcore/rootfs/bin
 cp -d lib/* path_to_zcore/rootfs/lib
-cp -r x86_64-linux-musl/* ~/github/fork/zCore/rootfs
+cp -rd x86_64-linux-musl/* path_to_zcore/rootfs
 ```
 
 经过一定修改后即可在 zCore 目录中运行，如：
@@ -36,7 +38,7 @@ cargo run -p linux-loader /bin/x86_64-linux-musl-gcc
 
 ```bash
 cd rust-1.45.2-x86_64-unknown-linux-musl
-./install.sh --prefix=path_to_zCore_rootfs
+./install.sh --prefix=path_to_zcore/rootfs
 ```
 
 之后即可运行 rustc：
@@ -107,6 +109,15 @@ cargo run -p linux-loader /bin/x86_64-linux-musl-gcc -pie -fpie
 cargo run -p linux-loader /bin/rustc
 ```
 
-- LibOS 中可以正常输出帮助信息，编译则会报段错误，但可以产生编译中间的 `*.o` 文件
-- QEMU 中会报 OOM (out of memory)，原因不明，但不是因为内存不足
+* LibOS 中可以正常输出帮助信息，编译则会报段错误，但可以产生编译中间的 `*.o` 文件
+* QEMU 中会报 OOM (out of memory)，原因不明，但不是因为内存不足
 
+### Git
+
+使用方法：
+
+```bash
+cargo run -p linux-loader /bin/git
+```
+
+目前只能使用与网络无关的功能，如 `git init`

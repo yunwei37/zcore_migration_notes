@@ -36,10 +36,10 @@ Group wiki: [2020年操作系统专题训练大实验-移植rCore内核功能到
     * [x] pipe 系统调用
     * [x] 信号量系统调用
     * [x] 共享内存系统调用（大概能跑，继续完善）
-  * [ ] 系统调用的单元测试
+  * [x] 系统调用的单元测试
     * [x] 使用 busybox 的命令进行一定的测试（已完成部分）
     * [x] 完善系统调用单元测试的框架
-    * [ ] libc-test
+    * [x] libc-test
 * [李宇](https://github.com/wfly1998)：
   * [x] 移植 shell
     * [x] 实现 stdin
@@ -211,6 +211,7 @@ Group wiki: [2020年操作系统专题训练大实验-移植rCore内核功能到
 - add semaphores related syscalls
 - [#156](https://github.com/rcore-os/zCore/pull/156)
 
-2020/8/20 - 
+2020/8/20 - 8/22
 
 - pull request: [#160](https://github.com/rcore-os/zCore/pull/160)
+- 添加了共享内存相关系统调用和测试

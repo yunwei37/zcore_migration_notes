@@ -31,7 +31,10 @@ Group wiki: [2020年操作系统专题训练大实验-移植rCore内核功能到
     * [x] linux-loader
     * [x] linux-syscall
     * [x] linux-object 
-  * [ ] 完善文件系统相关
+  * [x] 完善文件系统相关
+    * [x] select syscall
+    * [x] 时间相关系统调用以及 touch 创建文件
+    * [x] 修复环境变量问题
   * [x] 进程间通信机制
     * [x] pipe 系统调用
     * [x] 信号量系统调用
@@ -215,3 +218,8 @@ Group wiki: [2020年操作系统专题训练大实验-移植rCore内核功能到
 
 - pull request: [#160](https://github.com/rcore-os/zCore/pull/160)
 - 添加了共享内存相关系统调用和测试
+
+2020/8/26 - 8/27
+
+- pull request: [164](https://github.com/rcore-os/zCore/pull/164)
+- 添加了 async select, 并完善了 poll 和 select 的定时机制

@@ -48,7 +48,6 @@ Group wiki: [2020年操作系统专题训练大实验-移植rCore内核功能到
     * [x] 实现 stdin
       * [x] 实现 `EventBus`
     * [x] 实现 `sys_poll`
-  * [ ] 移植 GNU Make
   * [ ] 移植 Rust 工具链
   * [x] 移植 GCC
 * [曾广仕](https://github.com/NameAvailable319)：

@@ -1,4 +1,4 @@
-# rCore 到 zCore 功能迁移组汇报
+# rCore 到 zCore 功能迁移组汇报——程序使用方法
 
 ## 移植成功的程序
 
@@ -28,6 +28,8 @@ cargo run --release -p linux-loader /bin/busybox ls
 而以下操作可能涉及 `busybox` 的替换，因此建议进行操作前先将 `rootfs/bin/` 中的原版 `busybox` 备份一下
 
 ```bash
+git clone https://github.com/yunwei37/zcore_migration_notes.git
+cd zcore_migration_notes/migration
 cp bin/* path_to_zcore/rootfs/bin
 cp -d lib/* path_to_zcore/rootfs/lib
 cp -rd x86_64-linux-musl/* path_to_zcore/rootfs

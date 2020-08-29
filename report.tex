@@ -1,0 +1,147 @@
+\documentclass{beamer}
+\usepackage[UTF8,noindent]{ctexcap}
+\usepackage{hyperref}
+\usetheme{Berlin}
+\usecolortheme{sustech}
+\usepackage{enumitem,amssymb}
+\newlist{todolist}{itemize}{2}
+\setlist[todolist]{label=$\square$}
+\usepackage{pifont}
+\newcommand{\cmark}{\ding{51}}
+\newcommand{\xmark}{\ding{55}}
+\newcommand{\done}{\rlap{$\square$}{\raisebox{2pt}{\large\hspace{1pt}\cmark}}\hspace{-1.5pt}}
+\newcommand{\wontfix}{\rlap{$\square$}{\large\hspace{1.5pt}\xmark}}
+
+\newcommand{\tri}{$\blacktriangleright$}
+
+\begin{document}
+
+\begin{frame}
+	\title{rCore 到 zCore 的功能迁移组\ 结题报告}
+	\author{郑权\ 郑昱笙\ 许善朴\ 李宇}
+	\date{\today}
+	\titlepage
+\end{frame}
+
+\begin{frame}
+	\frametitle{目录}
+	\tableofcontents
+\end{frame}
+
+\section{开始之前}
+\begin{frame}
+	\frametitle{zCore 状况}
+	\begin{itemize}
+		\item [\tri] zCore 中 Linux 相关模块的文档和单元测试相对缺失
+		\item [\tri] 文件系统除以下部分基本完成
+		\begin{itemize}
+			\item [\tri] stdin 尚未实现
+			\item [\tri] IO 多路复用尚未实现
+			\item [\tri] 时间相关模块尚未实现
+		\end{itemize}
+		\item [\tri] 进程间通信机制暂时缺失
+		\item [\tri] 信号机制暂时缺失
+		\item [\tri] Linux 测试用例暂时缺失
+		\item [\tri] 仅能运行简单的 busybox 等小程序
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{组内分工}
+	郑昱笙
+	\begin{itemize}
+		\item [\tri] 尝试完善 Linux 系统调用的单元测试及 libc-test
+		\item [\tri] 以测试驱动开发，尝试尽可能多地移植 rCore 相关功能
+	\end{itemize}
+	李宇
+	\begin{itemize}
+		\item [\tri] 尝试移植 rCore 支持的程序，如 GCC，Rust 工具链等
+		\item [\tri] 以移植驱动开发，尝试移植及修复 zCore 相关功能
+	\end{itemize}
+\end{frame}
+
+\section{主要成果}
+\begin{frame}
+	\frametitle{阶段进展}
+	\begin{itemize}
+		\begin{todolist}
+			\item [\done] 完善代码文档
+			\item [\done] 完善 Linux 文件系统相关功能
+			\item [\done] 完善 Linux 进程通信相关功能
+			\item [\done] 添加系统调用的单元测试
+			\item [\done] 实现 stdin
+			\item [\done] 移植 shell
+			\item [\done] 移植 GCC
+			\item 移植 Rust 工具链
+		\end{todolist}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{成果概述}
+	Linux 相关模块测试覆盖率变化
+	\begin{itemize}
+		\item [\tri] linux-loader\ 74.63 $\rightarrow$ 87.88
+		\item [\tri] linux-syscall\ 18.68 $\rightarrow$ 61.55
+		\item [\tri] linux-object\ 41.84 $\rightarrow$ 56.17
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{成果概述}
+	系统调用相关改进
+	\begin{itemize}
+		\item [\tri] 添加了时间相关模块和系统调用
+		\item [\tri] 添加了进程间通信相关模块和系统调用
+		\item [\tri] 完善了文件系统和 IO 相关系统调用
+		\item [\tri] 修复了一些系统调用的 bug
+		\item [\tri] 共提交 17 个 Pull Request，涉及 35 个系统调用
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{成果概述}
+	功能移植相关进展
+	\begin{itemize}
+		\item [\tri] shell 可以运行外部命令
+		\item [\tri] 可以使用 sh 命令执行简单的 shell 脚本
+		\item [\tri] 可以使用 GCC 编译简单的 C 程序
+	\end{itemize}
+\end{frame}
+
+\section{写在后面}
+\begin{frame}
+	\frametitle{后续任务}
+	\begin{itemize}
+		\item [\tri] 完善 sys\_symlink 系统调用
+		\item [\tri] 完善 sys\_epoll 系统调用
+		\item [\tri] 完善 sys\_mmap 系统调用
+		\item [\tri] 完善信号机制
+		\item [\tri] 完善对 shell 和 GCC 的测试
+		\item [\tri] 移植 Rust 工具链
+		\item [\tri] 添加网络相关功能
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{致谢}
+	感谢陈渝老师和向勇老师为我们提供这样一个学习和交流的平台
+	\\
+	感谢王润基学长细心的指导、耐心的 Code Review
+	\\
+	感谢助教们细致的答疑解惑
+	\\
+	感谢队友们在合作过程中给予的帮助
+\end{frame}
+
+\begin{frame}
+	\frametitle{尾声}
+	祝愿我们的 OS Tutorial Summer of Code 越办越好
+\end{frame}
+
+\begin{frame}
+	\frametitle{尾声}
+	谢谢观看
+\end{frame}
+
+\end{document}

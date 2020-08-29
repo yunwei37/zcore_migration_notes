@@ -50,7 +50,7 @@ rCore 是用 Rust 语言实现的兼容 Linux 内核。它支持四种指令集�
 ## 小组成员分工
 
 - 李宇：尝试从 Linux 用户程序入手，在 zCore 上运行 rCore 支持的 GCC，Nginx，Rustc 等，并修复和移植相关的功能；
-- 郑昱笙：尝试完善 linux 系统调用的单元测试和 libc-test, 并以测试驱动尝试尽可能多地移植 rCore 的相关功能
+- 郑昱笙：尝试完善 linux 系统调用的单元测试和 libc-test, 并以测试驱动开发，尝试尽可能多地移植和完善 rCore 的相关功能
 
 ## 主要成果描述
 
@@ -193,7 +193,7 @@ GCC 在补充了一些系统调用之后就可以编译出 `*.o` 的中间结果
 
 - [#152 fix regression/rlimit-open-files.exe in libc-test](https://github.com/rcore-os/zCore/pull/152)
   - 添加了 `dup` 系统调用；
-  - 添加了进程最大打开文件数量限制；
+  - 添加了进程最大打开文件数量限制，以通过 libc-test 的相关测试；
 
 - [#164 Add async select syscall](https://github.com/rcore-os/zCore/pull/164)
   - 添加了使用 async/await 的 `select` 系统调用；
@@ -216,7 +216,7 @@ GCC 在补充了一些系统调用之后就可以编译出 `*.o` 的中间结果
      - [#156 Add semaphores syscalls](https://github.com/rcore-os/zCore/pull/156)
 
 3. 共享内存相关系统调用；
-   - 添加了 `shmget` `shmat` `shmdt` `shmctl` 系统调用，以及相关的文档和用户态单元测试（基于 libc-test）；
+   - 添加了 `shmget` `shmat` `shmdt` `shmctl` 系统调用，以及相关的文档和用户态单元测试（基于 libc-test）；其中 `shmctl` 在 rCore 中并未实现；
    - 相关PR：
      - [#160 Add shared memory ipc syscalls](https://github.com/rcore-os/zCore/pull/160)
   
@@ -224,7 +224,7 @@ GCC 在补充了一些系统调用之后就可以编译出 `*.o` 的中间结果
 
 #### 致谢
 
-非常感谢陈渝老师和向勇老师为我们提供这样一个学习交流的平台和机会，也感谢王润基学长细致耐心的指导和助教们对代码的审核，以及我的队友们在这一过程中给我的帮助，比如很多用户态程序的编译工作也都依赖于李宇同学在前期的探索；
+非常感谢陈渝老师和向勇老师为我们提供这样一个学习交流的平台和机会，也感谢王润基学长细致耐心的指导、code review 和助教们的答疑解惑，以及我的队友们在这一过程中给我的帮助，比如很多用户态程序的编译工作也都依赖于李宇同学在前期的探索；
 
 ## 对实验的后续开发内容建议或设想
 
@@ -235,6 +235,7 @@ GCC 在补充了一些系统调用之后就可以编译出 `*.o` 的中间结果
 - epoll 还未实现，要涉及到部分文件相关概念转换；
 - 网络通信部分还未实现，但工作量比较大；
 - 可以将 zCore 中部分已经重构或实现更完善的代码整合回 rCore 中；
+- poll 和 select 也许可以尝试使用 select! 宏来完成；
 
 李宇：
 

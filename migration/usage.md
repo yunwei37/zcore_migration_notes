@@ -2,14 +2,14 @@
 
 ## 移植成功的程序
 
-* shell (busybox)
+* shell (in `busybox`)
 * GCC
 
 ## 使用方法
 
 ### 环境配置
 
-按照 zCore 仓库的 `README.md` 进行配置，使其可正常执行如下命令：
+按照 zCore 仓库的 [`README.md`](https://github.com/rcore-os/zCore) 进行配置，使其可正常执行如下命令：
 
 ```bash
 cargo run --release -p linux-loader /bin/busybox ls
@@ -25,15 +25,19 @@ cargo run --release -p linux-loader /bin/busybox ls
 
 所以，LibOS 与 QEMU 使用的 shell (busybox) 不同，LibOS 中需使用王润基学长添加 Force-NOMMU 参数编译的 `busybox`，QEMU 中需使用原版 `busybox`
 
-而以下操作可能涉及 `busybox` 的替换，因此建议进行操作前先将 `rootfs/bin/` 中的原版 `busybox` 备份一下
+而以下操作可能涉及 `busybox` 的替换，因此建议进行操作前先将 `rootfs/bin/` 中的原版 `busybox` 备份一下，如：`cp rootfs/bin/busybox rootfs/bin/busybox.bak`
+
+使用方法：
 
 ```bash
 git clone https://github.com/yunwei37/zcore_migration_notes.git
 cd zcore_migration_notes/migration
 cp bin/* path_to_zcore/rootfs/bin
-cp -d lib/* path_to_zcore/rootfs/lib
-cp -rd x86_64-linux-musl/* path_to_zcore/rootfs
+cp -d lib/* path_to_zcore/rootfs/lib               # use cp -R in macOS
+cp -rd x86_64-linux-musl/* path_to_zcore/rootfs    # use cp -R in macOS
 ```
+
+请将以上路径中的 `path_zo_zcore` 替换为 zCore 仓库的路径
 
 #### `shell` 使用方法 (LibOS)
 
@@ -50,9 +54,10 @@ cargo run --release -p linux-loader /bin/busybox sh
 3. 由于未知原因，`shell` 除内置命令，如 `cd`, `pwd` 外，只能执行一条外部命令，解决方法如下（**不建议**）：
    1. 打开 `linux-object/src/process.rs`，找到 `wait_child` 和 `wait_child_any` 函数
    2. 将以上两函数结尾前执行 `signal_clear` 的代码注释掉，即可正常执行 **LibOS 中的** shell
+
       **注**：
       * 将这两行代码注释掉后仅可正常执行 LibOS 中的 shell，但会影响 QEMU 中的 shell 及 GCC 等程序正常执行，**所以不建议修改**
-      * 如已修改，执行 GCC 前或使用 QEMU 前请取消掉以上两行的注释
+      * 如已修改，执行 GCC 前或使用 QEMU 前请取消掉以上两行的注释，或者使用 `git checkout` 还原代码
 
 #### GCC 使用方法 (LibOS)
 
@@ -82,21 +87,11 @@ cargo run --release -p linux-loader /root/hello.out
 
 0. 将 `rootfs/bin/` 中的 `busybox`  替换为原版
 
-1. 使用如下命令安装 `rcore-fs-fuse`
+1. 使用如下命令生成镜像：
 
    ```bash
-   cargo install rcore-fs-fuse --git https://github.com/rcore-os/rcore-fs
+   make image
    ```
-
-2. 在 zCore 仓库目录中执行如下命令打包镜像：
-
-   ```bash
-   rcore-fs-fuse zCore/x86_64.img rootfs zip
-   ```
-
-   打包前记得提前创建需用 GCC 编译的 C 程序，如果之前已创建并编译，请提前删除 `hello.out` 以避免影响后续 GCC 的使用
-
-3. `cd zCore`，即可进行如下操作
 
 #### `shell` 使用方法 (QEMU)
 

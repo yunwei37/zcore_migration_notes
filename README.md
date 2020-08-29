@@ -9,6 +9,10 @@
 
 Group wiki: [2020年操作系统专题训练大实验-移植rCore内核功能到zCore](http://os.cs.tsinghua.edu.cn/oscourse/OsTrain2020/g3)
 
+最终报告：[report.md](report.md)
+
+演示文档：[report.pdf](report.pdf)
+
 ## 组员每日记录文档
 
 - [李宇](https://github.com/wfly1998/DailySchedule)

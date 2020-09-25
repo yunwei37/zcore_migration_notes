@@ -9,11 +9,13 @@
 
 ### 环境配置
 
-按照 zCore 仓库的 [`README.md`](https://github.com/rcore-os/zCore) 进行配置，使其可正常执行如下命令：
+首先，需要按照 zCore 仓库的 [`README.md`](https://github.com/rcore-os/zCore) 进行配置，使其可正常执行如下命令：
 
 ```bash
 cargo run --release -p linux-loader /bin/busybox ls
 ```
+
+完成该步骤后再进行后续工作。
 
 ### LibOS
 
@@ -50,8 +52,11 @@ cargo run --release -p linux-loader /bin/busybox sh
 注：
 
 1. 由于 LibOS 及 HostFS 的限制，在 `shell` 中不能直接执行如 `ls`, `rm` 等命令，需使用 `busybox ls`, `busybox rm` 等命令执行
+   
+   一个可行的解决方法是：删除 `/bin` 中的 `ls` 文件等，然后使用 `ln -s` 命令将 `ls` 等重新使用相对路径链接到 `busybox` 上
+   
 2. 由于未知原因，`shell` 不会显示正常 shell 会显示的如 `/ #`, `~ $` 等表示 shell 的符号
-3. 由于未知原因，`shell` 除内置命令，如 `cd`, `pwd` 外，只能执行一条外部命令，解决方法如下（**不建议**）：
+3. 由于 `sys_wait4` 的未知原因，`shell` 除内置命令，如 `cd`, `pwd` 外，只能执行一条外部命令，解决方法如下（**不建议**）：
    1. 打开 `linux-object/src/process.rs`，找到 `wait_child` 和 `wait_child_any` 函数
    2. 将以上两函数结尾前执行 `signal_clear` 的代码注释掉，即可正常执行 **LibOS 中的** shell
 
